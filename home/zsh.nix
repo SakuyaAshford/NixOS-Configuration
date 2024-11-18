@@ -8,12 +8,19 @@
   history.size = 10000;
   history.path = "${config.xdg.dataHome}/zsh/history";
   shellAliases = {
+    vi = "nvim";
     vim = "nvim";
-    ls = "ls --color";
+    htop = "btm";
+    ls = "eza --icons -T";
+    cat = "bat";
+    fd = "fd -Lu";
     ctrl-l = "clear";
     C-l = "ctrl-l";
     control-l = "clear";
     clean = "clear";
+    neofetch = "disfetch";
+    fetch = "disfetch";
+    gitfetch = "onefetch";
   };
   initExtra = ''
     ZSH_DISABLE_COMPFIX=true
