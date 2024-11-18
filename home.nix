@@ -43,10 +43,9 @@
     fd
     onefetch
     
-    # Fonts
-    nerdfonts
-    powerline
   ];
+  
+  
 
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -93,4 +92,8 @@
     zoxide = import ./home/zoxide.nix {inherit config pkgs; };
     zsh = import ./home/zsh.nix { inherit config pkgs lib; };
   };
+  # fonts.packages = with pkgs; [
+  #   nerdfonts
+  #   powerline
+  # ];
 }

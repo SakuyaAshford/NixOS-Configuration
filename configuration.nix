@@ -54,7 +54,12 @@
     isNormalUser = true;
     shell = pkgs.zsh;
   };
- 
+  
+  fonts.packages = with pkgs; [
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    powerline
+  ]; 
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = { 
