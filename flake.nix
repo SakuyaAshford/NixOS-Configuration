@@ -1,6 +1,6 @@
 {
   description = "A very basic flake";
-  
+   
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-wsl.url = "github:nix-community/nixos-wsl";
