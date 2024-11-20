@@ -9,17 +9,18 @@
 
 {
   
+  wsl = {
+    enable = true;
+    defaultUser = "nixos";
+    startMenuLaunchers = true;
+    
+  };
 
-  wsl.enable = true;
-  wsl.defaultUser = "nixos";
-
-  # Enable Flakes
+  # Experimental Features; Enable Flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ]; 
   
-  # Bootloader
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.device = "dev/vda";
-  # boot.loader.grub.useOSProber = true;
+  # Kernel Modules
+  boot.kernelModules = [ "i2c-dev" "i2c=piix4" "cpufreq_powersave" ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -76,5 +77,13 @@
   ];
 
   programs.zsh.enable = true;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 }
 

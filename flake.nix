@@ -8,9 +8,16 @@
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs"; 
+    
+    /* Dev Shell */
+    # Rust
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, nixos-wsl, home-manager, ... }: {
+  outputs = { self, nixpkgs, nixos-wsl, home-manager, rust-overlay, ... }: {
      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
        system = "x86_64-linux";
        modules = [
@@ -22,6 +29,10 @@
            home-manager.useGlobalPkgs = true;
            home-manager.useUserPackages = true;
          }
+	 ({ pkgs, ... }: {
+           nixpkgs.overlays = [ rust-overlay.overlays.default ];
+           environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+	 })
        ];
      };
   };
