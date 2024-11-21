@@ -68,15 +68,18 @@
     };
   };
   
+
+  nixpkgs.config.allowUnfree = true;  
   environment.systemPackages = with pkgs; [
     fzf
     git
     neovim
-    tmux
+    # tmux
     vim
   ];
 
   programs.zsh.enable = true;
+  # programs.tmux.enable = true; 
 
   xdg.portal = {
     enable = true;
