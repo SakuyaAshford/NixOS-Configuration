@@ -76,6 +76,9 @@
     neovim
     # tmux
     vim
+
+    # lang
+    rustup
   ];
 
   programs.zsh.enable = true;

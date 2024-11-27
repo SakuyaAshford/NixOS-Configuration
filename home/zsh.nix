@@ -22,6 +22,7 @@
     fetch = "disfetch";
     gitfetch = "onefetch";
   };
+
   initExtra = ''
     ZSH_DISABLE_COMPFIX=true
     export EDITOR=nvim
@@ -75,6 +76,7 @@
     plugins = [
       "sudo"
       "command-not-found"
+      "rust"
     ];
   };
   plugins = [

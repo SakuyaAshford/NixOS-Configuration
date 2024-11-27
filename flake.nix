@@ -31,8 +31,27 @@
          }
 	 ({ pkgs, ... }: {
            nixpkgs.overlays = [ rust-overlay.overlays.default ];
-           environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+           environment.systemPackages = with pkgs; [
+             ( rust-bin.stable.latest.default.override {
+               extensions = [ "rust-src" "rust-analyzer" "rustfmt" "clippy" ]; 
+             })
+           gcc
+           pkg-config
+           ];
 	 })
+       ];
+     };
+     devShells.x86_64-linux.default = let
+       pkgs = import nixpkgs {
+         system = "x86-64-linux";
+         overlays = [ rust-overlay.overlays.default ];
+       };
+     in pkgs.mkShell {
+       buildInputs = with pkgs; [
+         ( rust-bin.stable.latest.default.overrid {
+           extensions = [ "rust-src" "rust-analyzer" "rustfmt" "clippy" ];
+         })
+         pkg-config
        ];
      };
   };
