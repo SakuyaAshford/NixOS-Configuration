@@ -42,6 +42,9 @@
     eza
     fd
     onefetch
+
+    direnv
+    nix-direnv
     
   ];
   
@@ -95,6 +98,8 @@
     tmux = import ./home/tmux.nix { inherit pkgs; };
     zoxide = import ./home/zoxide.nix {inherit config pkgs; };
     zsh = import ./home/zsh.nix { inherit config pkgs lib; };
+
+    direnv.enable = true;
   };
   # fonts.packages = with pkgs; [
   #   nerdfonts
