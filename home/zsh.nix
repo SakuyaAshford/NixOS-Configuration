@@ -77,6 +77,7 @@
       "sudo"
       "command-not-found"
       "rust"
+      "direnv"
     ];
   };
   plugins = [
